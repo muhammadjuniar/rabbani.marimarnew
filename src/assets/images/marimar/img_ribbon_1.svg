@@ -1,0 +1,23 @@
+<svg width="360" height="95" viewBox="0 0 360 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M174.5 69.202c10.4-59.6-126.667-11.5-196.5 20l5-36.5c188-81 208-30 199 0-7.2 24 .333 23 5 19.5 103.2-78.4 180.333-72.333 206-59.5v56.5c-99-71.5-231.5 74.5-218.5 0z" fill="url(#lyw2b72yva)"/>
+    <mask id="t5y33ikp5b" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-22" y="5" width="415" height="87">
+        <path d="M174.5 69.202c10.4-59.6-126.667-11.5-196.5 20l5-36.5c188-81 208-30 199 0-7.2 24 .333 23 5 19.5 103.2-78.4 180.333-72.333 206-59.5v56.5c-99-71.5-231.5 74.5-218.5 0z" fill="#E82020"/>
+    </mask>
+    <g mask="url(#t5y33ikp5b)">
+        <path d="M177 47.702c-7.2-49.2-124.333-7.5-182 19.5l-1.5 47.5 369.5-24.5c18.833-2.833 47.8-17.5 13-53.5-43.5-45-166.5 30.5-185 41s-16.5-1.5-14.5-10.5c1.6-7.2 1-16 .5-19.5z" fill="url(#7tm1bhv6tc)"/>
+    </g>
+    <defs>
+        <linearGradient id="lyw2b72yva" x1="-22" y1="48.015" x2="418.5" y2="11.702" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E82020"/>
+            <stop offset=".395" stop-color="#BD1919"/>
+            <stop offset=".725" stop-color="#E82020"/>
+            <stop offset="1" stop-color="#610808"/>
+        </linearGradient>
+        <linearGradient id="7tm1bhv6tc" x1="-6.38" y1="84.138" x2="388.38" y2="38.267" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fff"/>
+            <stop offset=".448" stop-color="#DBDBDB"/>
+            <stop offset=".686" stop-color="#fff"/>
+            <stop offset="1" stop-color="#D8D8D8"/>
+        </linearGradient>
+    </defs>
+</svg>

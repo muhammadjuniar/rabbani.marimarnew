@@ -1,0 +1,78 @@
+{
+  "name": "rabbani.dpr",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "axios": "^1.3.4",
+    "bootstrap": "^5.2.3",
+    "bootstrap-datepicker": "^1.9.0",
+    "bs-custom-file-input": "^1.3.4",
+    "chart.js": "^2.9.4",
+    "clipboard": "^2.0.11",
+    "core-js": "^3.29.1",
+    "cors": "^2.8.5",
+    "datatables.net": "^1.13.1",
+    "magic-string": "^0.27.0",
+    "moment": "^2.29.4",
+    "perfect-scrollbar": "^1.5.5",
+    "pinia": "^2.0.32",
+    "qs": "^6.11.1",
+    "select2": "^4.1.0-rc.0",
+    "slick": "^1.12.2",
+    "summernote": "^0.8.20",
+    "sweetalert2": "^11.4.8",
+    "toastr": "^2.1.4",
+    "utf8": "^3.0.0",
+    "vue": "^3.3.2",
+    "vue-router": "^4.1.6",
+    "vue3-carousel": "^0.2.14",
+    "vue3-qr-reader": "^1.0.0",
+    "vuex": "^4.1.0",
+    "vuex-persistedstate": "^4.1.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@jridgewell/sourcemap-codec": "^1.4.14",
+    "@popperjs/core": "2.11.6",
+    "@rollup/plugin-alias": "3.1.9",
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "@vue/compiler-dom": "^3.2.47",
+    "@vue/compiler-sfc": "^3.2.47",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/server-renderer": "^3.2.47",
+    "@vue/test-utils": "^2.3.2",
+    "eslint": "^8.39.0",
+    "eslint-plugin-vue": "^9.11.0",
+    "jsdom": "^22.0.0",
+    "prettier": "^2.8.8",
+    "vite": "^4.3.5",
+    "vitest": "^0.31.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "jquery": true,
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  }
+}
