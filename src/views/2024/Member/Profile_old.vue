@@ -99,44 +99,6 @@
 														<div class="head-content-profile mb-2">
 															<div class="fs-16px main-color-secondary-marimar fw-bold">Group Member</div>
 														</div>
-														
-														<div v-for="children in childrens" class="body-content-profile mb-3">
-															<div class="card card-daftar-member">
-																<div class="row align-items-center mb-3">
-																	<div class="col-lg-12">
-																		<div class="row align-items-center p-1 pl-2 pr-2">
-																			<div class="col-4 text-center">
-																		<div class="profile-img">
-																			<img :default="(children.child_pic) ? children.child_pic : getAssetFile('images/marimar/member_area','ico_profile.png')" :src="(children.child_pic) ? children.child_pic : getAssetFile('images/marimar/member_area','ico_profile.png')"/>
-																		</div>
-																	</div>
-																	<div class="col-8">
-																		<div class="foto-member mb-2">Foto Member</div>
-																		<button type="submit" class="btn btn-sm btn-upload" @click.prevent="processDeleteMember(children.child_id)">Hapus</button>
-																	</div>
-																		</div>
-																	</div>
-																	
-																	<div class="col-lg-12">
-																		<div class="p-1 pl-3 pr-3">
-																		<div class="form-group mb-3">
-																			<label class="form-label-profile form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar w-100">Nama Member<span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
-																			<input type="text" readonly class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="Member Group Qasidah" :value="children.child_name" >
-																		</div>
-																		<div class="form-group mb-3">
-																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary">Tanggal Lahir <span class="main-color-secondary fs-9px lh-normal fw-normal">wajib diisi</span></label>
-																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar">{{ children.child_dob }}</label>
-
-																		</div>
-																		<div class="form-group mb-3">
-																			<label class="form-label-profile form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar w-100">Nomor Whatsapp <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
-																			<input type="text" readonly class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="08XXXXXXXXXX" :value="children.child_phone" >
-																		</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
 														<form @submit.prevent="processRegisterMember">
 														<div class="body-content-profile mb-3">
 															<div class="card card-daftar-member">
@@ -199,11 +161,11 @@
 															type="submit" class="p-3 btn btn-xl btn-daftar-marimar br-8 shadow align-items-center justify-content-center mb-4"
 															>SIMPAN</button
 														>
-														<router-link :to="{name: '2024.home'}">
 														<div
+															:to="{ name: '2024.home' }"
 															class="p-3 btn btn-xl btn-marimar br-8 shadow align-items-center justify-content-center mb-4"
 															>KEMBALI</div
-														></router-link>
+														>
 													</div>
 													<div class="nk-block mt-5 mb-4">
 														<button v-if="user.level_publish == 0" type="submit" class="btn btn-block btn-lg main-bg-secondary text-white br-8 mb-3 p-3 fs-15px"><span>Simpan Perubahan</span></button>
@@ -240,8 +202,8 @@
 	import { handleListLocation, onChangeLocation, autoSelectLocation, getSelectedLocation, handleListStoreGroupLocation } from '@/models/location'
 
 	import { logoutUser } from '@/controllers/home'
-	import { postMember, confirmationMemberRegister, deleteMember } from '@/controllers/api_v2/home'
-	import { getProfile, getMemberChildren, postUpdateProfile, getDetailMember, postUpdateImage, getLevel } from '@/controllers/api_v2/member'
+	import { postMember, confirmationMemberRegister } from '@/controllers/api_v2/home'
+	import { getProfile, postUpdateProfile, getDetailMember, postUpdateImage, getLevel } from '@/controllers/api_v2/member'
 	import { getProvince, getStoreGroupLocation } from '@/controllers/location'
 	import { checkRegisterTransaction, postRegisterTransaction, paymentChannelList } from '@/controllers/api_v2/transaction'
 
@@ -258,7 +220,6 @@
 			const socialList = socialMedia();
 			let user = ref(null), load = reactive({status:'pending', msg:''});
 			let achievements = ref([]);
-			let childrens = ref([]);
 			let birthdate = reactive({day:'', month:'', year:''}), talents = ref(talentList());
 			let profilePic = ref(null), parentDoc = ref(null), schoolDoc = ref(null), parentCardPic = ref(null);
 			let profile = reactive({
@@ -297,7 +258,6 @@
 			onMounted(async () => {
 				await sleep(100);
 				loadProfile();
-				loadMember();
 			})
 
 			const loadProfile = async () => {
@@ -333,20 +293,6 @@
 					await loadStoreGroup();
 				}
 			}
-			
-			const loadMember = async () => {
-				const result = await getMemberChildren(member_id);
-				if(result){
-					load.msg = result.msg;
-					if(result.success && result.data){
-						 childrens.value = result.data;
-						 console.log(childrens.value);
-					}
-					load.status = result.type;
-					await sleep(100);
-				}
-			}
-			
 
 			const loadLevel = async () => {
 				if(load.status == 'success'){
@@ -571,13 +517,6 @@
 
 			const new_member = reactive({name_member:'', phone_number:'', status_member:'pending', otp:''})
 
-			const processDeleteMember = async (child_id = '') => {
-				const result = await deleteMember({member_id:member_id, child_id:child_id});
-					if(result){
-						sleep(2000); window.location.reload();
-					}
-			}
-
 			const processRegisterMember = async () => {
 
 				var existPic = await getFileUpload('file-select-image-foto-profile');
@@ -790,7 +729,7 @@
 				parentDoc, schoolDoc, needLogin, location, notifStatus, numberFormat, payment_register,
 				payments, selectPaymentRegister, processPaymentRegister, resetPaymentRegister, dateFormat,
 				parentCardPic, fotos, actionFotos, checkReferalCode, fitur_status, show_evaluation,
-				is_current_level, levels, loadMember, childrens, processDeleteMember
+				is_current_level, levels
 			}
 		},
 		components: {EmptyContent, LazyContent, AlertContent},

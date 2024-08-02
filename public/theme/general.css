@@ -1026,7 +1026,7 @@ select.form-control{height: calc(2.75rem + 2px) !important;}
     background-color: #ffdada !important;
   }
   
-  .profile-img img {
+  .profile-img .img {
     width: 57px !important;
     height: 57px !important;
     object-fit: contain !important;

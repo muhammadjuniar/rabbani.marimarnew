@@ -40,6 +40,12 @@ const getProfile = async (memberId) => {
     }
 }
 
+const getMemberChildren = async (memberId) => {
+	const respone = await fetchData('get', `user/event/audition-member-child/list/${api_event}/${memberId}`);
+    if(respone){
+        return respone;
+    }
+}
 
 const postUpdateProfile = async (memberId, data = null) => {
     loadingAlert();
@@ -69,4 +75,4 @@ const postUpdateImage = async (memberId, data = null) => {
 
 
 //============================ RETURN ============================//
-export { getMember, getDetailMember, getProfile, postUpdateProfile, postUpdateImage, getLevel }
+export { getMember, getMemberChildren, getDetailMember, getProfile, postUpdateProfile, postUpdateImage, getLevel }
