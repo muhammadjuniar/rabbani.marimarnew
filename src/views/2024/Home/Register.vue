@@ -96,7 +96,7 @@
 			const processConfirm = async () => {
 				const result = await confirmationRegister({
 					phone_number:user.phone, password:user.password,
-					cpassword:user.confirm_password, otp:user.otp, code:'DPRD'
+					cpassword:user.confirm_password, otp:user.otp, code:'MARIMAR'
 				});
 				if(result){
 					sleep(1000); window.location.href = '/profile';

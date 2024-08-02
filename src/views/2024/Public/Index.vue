@@ -3,12 +3,19 @@
 		<div class="container-fluid">
 			<div class="nk-content-inner">
 				<div class="nk-content-body">
-					<div class="wide-xs mx-auto border shadow bg-white main-content is-relative">
+					<div class="wide-xs mx-auto border shadow main-content is-relative bg-cover" :style="{ 'background-image': `url('${getAssetFile('images/marimar/member_area', 'img_background.png')}')` }">
 						<div class="card bg-transparent">
 							<div class="card-inner p-0">
-								<div class="main-bg-secondary-light pt-3">
-									<div class="content-public-head nk-block-head h-245px is-relative" :style="{ 'background-image': `url('${getAssetFile('images/2024','img-model-public.png')}') !important` }">
-										<div class="is-absolute public-head-text">
+								<div class="pt-3">
+									<div class="content-public-head nk-block-head h-245px is-relative" >
+										<router-link to="/">
+											<img
+											class="logo-marimar"
+											src="@/assets/images/marimar/img_logo_marimar.png"
+											alt="..."
+											/>
+										</router-link>
+										<!-- <div class="is-absolute public-head-text">
 											<h2 class="text-white text-uppercase text-vote pl-1 mb-3">VOTE</h2>
 											<h3 class="main-color-cream text-uppercase text-jagoan pl-1 mb-1">JAGOAN KAMU</h3>
 											<h1 class="main-color text-uppercase text-now">SEKARANG!!!</h1>
@@ -22,16 +29,20 @@
 													<input v-on:keyup.enter="handleFilter()" v-model="filter.search" type="text" class="pl-3 pr-3 pt-3 pb-3 form-control form-control-lg br-80 main-text-secondary border-0" id="search-member" placeholder="Cari jagoan kamu...">
 												</div>
 											</div>
+										</div> -->
+										
+										<div class="voting-title text-center p-2 pt-3 pb-3">
+											VOTE JAGOAN KAMU JANGAN SAMPAI GANTUNG REBANA
 										</div>
 									</div>
 								</div>
-								<div class="nk-block bg-white public-content is-relative">
+								<div class="nk-block bg-transparent public-content is-relative">
 									<div class="nk-block-content p-2 pt-3 pb-3">
-										<div class="public-category row m-0 justify-content-center p-0">
+										<!-- <div class="public-category row m-0 justify-content-center p-0">
 											<LazyContent v-if="load.status == 'first'" v-for="index in 7" :isHeight="'25'" :isWidth="'w-20'"></LazyContent>
 											<span v-if="load.status != 'first'" @click.prevent="handleSelectCategory($event)" class="is-pointer item-category badge badge-pill badge-md fw-normal active br-8 pl-1 pr-1 lh-normal fs-11px">Semua Bakat</span>
 											<span v-if="load.status != 'first'" v-for="talent in talents" @click.prevent="handleSelectCategory($event, talent.key)" class="is-pointer item-category badge badge-pill badge-md fw-normal br-8 pl-1 pr-1 lh-normal fs-11px">{{talent.text}}</span>
-										</div>
+										</div> -->
 										<div class="public-card mt-3">
 											<div v-if="load.status == 'first' || load.status == 'pending'">
 												<div class="card br-8 m-0 mb-2 bg-lighter" v-for="index in 5">

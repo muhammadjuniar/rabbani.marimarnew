@@ -25,17 +25,35 @@
 										<div class="nk-block pt-4">
 											<img class="ribbon" src="@/assets/images/marimar/member_area/img_ribbon_1.png" />
 										</div>
+										<div class="nk-block nk-block-middle nk-auth-body wide-xs mt-5">
+											<div class="brand-logo pb-4 text-center">
+												<img class="logo-img logo-img-lg" src="@/assets/images/img-rabbani-md.png" alt="logo">
+											</div>
+											<div class="card card-bordered">
+												<div class="card-inner card-inner-lg">
+													<div class="nk-block-head">
+														<div class="nk-block-head-content">
+															<div class="nk-block-des text-center">
+																<div class="text-dark fw-bold fs-18 ls-05 mb-2">Oops! Apa yang terjadi?								</div>
+																<p class="text-gray lh-normal">Halaman yang anda kunjungi masih dalam tahap pengerjaan oleh team dev kami.</p>
+																<p class="nk-error-text fs-11 mb-0 desc-empty-content text-danger"><i>*Harap kunjungi kembali nanti ya</i></p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 										<div id="member-area-top" class="nk-block p-4 pt-5">
 											<div class="row align-items-center justify-content-between m-0 mb-1">
 												<div class="title w-75">
-													<h2 class="text-uppercase main-color-marimar ls-sm mb-2">Selamat Datang</h2>
+													<!-- <h2 class="text-uppercase main-color-marimar ls-sm mb-2">Selamat Datang</h2>
 													<div class="row m-0 align-items-center mb-1">
-														<h4 class="text-uppercase main-color-marimar ls-sm mb-0 w-auto mw-80 text-short">{{ (user.member_name) ? user.member_name : ( (user.member_phone) ? user.member_phone : 'DPR Sekolah Dasar' ) }}</h4>
+														<h4 class="text-uppercase main-color-marimar ls-sm mb-0 w-auto mw-80 text-short">{{ (user.member_name) ? user.member_name : ( (user.member_phone) ? user.member_phone : 'DPR Sekolah Dasar' ) }}</h4> -->
 														<!-- <div class="icon-status-profile pl-2">
 															<span @click.prevent="notifStatus()" v-if="user.member_verified == 1" data-tooltip="Verified" data-tooltip-pos="right" class="text-teal fw-bold fs-18px"><em class="icon ni ni-check-circle-cut bg-white br-80 p-1 text-teal"></em></span>
 															<span @click.prevent="notifStatus()" v-else data-tooltip="Pending" data-tooltip-pos="right" class="text-orange fw-bold fs-18px"><em class="icon ni ni-histroy bg-white br-80 p-1 text-orange"></em></span>
 														</div> -->
-													</div>
+													<!-- </div> -->
 												</div>
 											</div>
 										</div>
@@ -73,7 +91,7 @@
 															</div>
 														</div>
 													</div> -->
-													<div class="content-profile">
+													<!-- <div class="content-profile">
 														<div class="head-content-profile mb-2">
 															<div class="fs-16px main-color-secondary-marimar fw-bold">Profile Group</div>
 														</div>
@@ -153,7 +171,7 @@
 															class="p-3 btn btn-xl btn-marimar br-8 shadow align-items-center justify-content-center mb-4"
 															>KEMBALI</div
 														>
-													</div>
+													</div> -->
 													<div class="nk-block mt-5 mb-4">
 														<button v-if="user.level_publish == 0" type="submit" class="btn btn-block btn-lg main-bg-secondary text-white br-8 mb-3 p-3 fs-15px"><span>Simpan Perubahan</span></button>
 														<div class="d-flex align-items-center justify-content-between pt-2 pb-2">
@@ -168,125 +186,6 @@
 									<div v-else>
 										<EmptyContent :textMessage="load.msg" :typeNotif="'empty'" :actionNotif="(needLogin) ? procesLogout : null" :actionNotifTitle="(needLogin) ? 'Masuk Ulang' : null"></EmptyContent>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="popup-payment-register" class="modal fade zoom" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-		<div class="modal-dialog modal-sm" role="document">
-			<div class="modal-content">
-				<div class="modal-header p-2 align-items-center">
-					<h4 class="modal-title fs-13px text-capitalize">Verifikasi Pendaftaran</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><em class="icon ni ni-cross-sm"></em></span></button>
-				</div>
-				<div class="p-0 pt-1 pb-2 modal-body">
-					<div class="card-inner card-inner-md" v-if="payment_register.verification">
-						<div class="nk-tb-list is-compact mb-4">
-							<div class="nk-tb-item">
-								<div class="nk-tb-col pl-0">
-									<span class="tb-sub"><span>Invoice</span></span>
-								</div>
-								<div class="nk-tb-col text-right pr-0">
-									<span class="tb-sub tb-amount"><span class="main-text-secondary fw-bold fs-12px">{{ payment_register.verification.register_code }}</span></span>
-								</div>
-							</div>
-							<div class="nk-tb-item">
-								<div class="nk-tb-col pl-0">
-									<span class="tb-sub"><span>Tanggal</span></span>
-								</div>
-								<div class="nk-tb-col text-right pr-0">
-									<span class="tb-sub tb-amount"><span class="main-text-secondary fw-bold fs-12px">{{ dateFormat(payment_register.verification.register_created_at, 'DD MMM, YYYY') }}</span></span>
-								</div>
-							</div>
-							<div class="nk-tb-item">
-								<div class="nk-tb-col pl-0">
-									<span class="tb-sub"><span>Pembayaran</span></span>
-								</div>
-								<div class="nk-tb-col text-right pr-0">
-									<span class="tb-sub tb-amount"><span class="main-text-secondary fw-bold fs-12px">{{ payment_register.verification.register_method_name }}</span></span>
-								</div>
-							</div>
-							<div class="nk-tb-item">
-								<div class="nk-tb-col pl-0">
-									<span class="tb-sub"><span>Total Bayar</span></span>
-								</div>
-								<div class="nk-tb-col text-right pr-0">
-									<span class="tb-sub tb-amount"><span class="main-text-secondary fw-bold fs-13px">{{ numberFormat(payment_register.verification.register_amount, {style:'currency'}) }}</span></span>
-								</div>
-							</div>
-						</div>
-						<div class="d-flex align-items-center justify-content-between">
-							<a :href="payment_register.verification.register_checkout_url" target="_blank" class="btn btn-lg main-bg-secondary text-white br-8 fs-14px btn-block"><span>Bayar Sekarang</span></a>
-						</div>
-					</div>
-					<div class="card-inner card-inner-md" v-else-if="payment_register.confirmation">
-						<div class="nk-tb-list is-compact mb-4">
-							<div class="nk-tb-item">
-								<div class="nk-tb-col pl-0">
-									<span class="tb-sub"><span>Pembayaran</span></span>
-								</div>
-								<div class="nk-tb-col text-right pr-0">
-									<span class="tb-sub tb-amount"><span class="main-text-secondary fw-bold fs-12px">{{ (payment_register.method.name) ? payment_register.method.name : payment_register.method.text }}</span></span>
-								</div>
-							</div>
-							<div class="nk-tb-item">
-								<div class="nk-tb-col pl-0">
-									<span class="tb-sub"><span>Subtotal</span></span>
-								</div>
-								<div class="nk-tb-col text-right pr-0">
-									<span class="tb-sub tb-amount"><span class="main-text-secondary fw-bold fs-13px">{{ numberFormat(payment_register.confirmation.total_price, {style:'currency'}) }}</span></span>
-								</div>
-							</div>
-							<div class="nk-tb-item">
-								<div class="nk-tb-col pl-0">
-									<span class="tb-sub"><span>Biaya Bank</span></span>
-								</div>
-								<div class="nk-tb-col text-right pr-0">
-									<span class="tb-sub tb-amount"><span class="main-text-secondary fw-bold fs-13px">{{ numberFormat(payment_register.confirmation.total_fee, {style:'currency'}) }}</span></span>
-								</div>
-							</div>
-							<div class="nk-tb-item main-bg">
-								<div class="nk-tb-col pl-2">
-									<span class="tb-sub"><span class="text-white">Total Bayar</span></span>
-								</div>
-								<div class="nk-tb-col text-right pr-2">
-									<span class="tb-sub tb-amount"><span class="text-white  fw-bold fs-14px">{{ numberFormat(payment_register.confirmation.payment_amount, {style:'currency'}) }}</span></span>
-								</div>
-							</div>
-						</div>
-						<div class="d-flex align-items-center justify-content-between">
-							<a @click.prevent="resetPaymentRegister()" class="btn btn-lg bg-light br-8 fs-14px"><span>Batal</span></a>
-							<a @click.prevent="processPaymentRegister()" class="btn btn-lg main-bg-secondary text-white br-8 fs-14px"><span>Verifikasi</span></a>
-						</div>
-					</div>
-					<div class="card-inner card-inner-md" v-else>
-						<AlertContent class="mb-4" :typeNotif="{type: 'info'}" :textNotif="`Verifikasi hanya di lakukan 1x untuk mengaktifkan pendaftaran dan kamu akan mendapatkan voucher senilai 15.000 yang bisa langsung di gunakan belanja di seluruh toko rabbani se-indonesia / secara online di wa 628112370111`"></AlertContent>
-						<div class="row mb-3 align-items-center justify-content-between">
-							<div class="col-5"><span class="main-text-secondary">Biaya</span></div>
-							<div class="col-7 text-right"><span>{{numberFormat(payment_register.price, {style:'currency'})}}</span></div>
-						</div>
-						<div class="row align-items-center justify-content-between">
-							<div class="col-5"><span class="main-text-secondary">KODE REFERRAL</span></div>
-							<div class="col-7 text-right">
-								<div class="input-group">
-									<input v-model="payment_register.referal" id="payment-register-referal" class="form-control main-bg-cream-light" placeholder="ID DPRD Terdaftar">
-									<div class="input-group-append">
-										<a @click.prevent="checkReferalCode()" class="btn btn-xs input-group-text main-bg text-white">Cek</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="payment-register-content mt-5">
-							<div class="title main-text-secondary fs-13px mb-3 text-center">Pilih Pembayaran:</div>
-							<div class="payment-list payment-list-register row m-0 align-items-center justify-content-center">
-								<div v-for="payment in payments.data" class="col-6 col-lg-6 mb-2 pl-2 pr-2">
-									<a  @click.prevent="selectPaymentRegister(payment.code)" class="btn btn-xl br-4 p-0 btn-white border btn-block">
-										<img class="p-1" :src="(payment.static) ? getAssetFile('icons', `${payment.slug}.png`) : payment.icon_url"/>
-									</a>
 								</div>
 							</div>
 						</div>

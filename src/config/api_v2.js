@@ -6,7 +6,7 @@ import { sleep } from "@/helpers/general";
 //export const api_url = "https://api.event.1itmedia.co.id";
 export const api_url = "https://api-event-3lldt.ondigitalocean.app";
 export const api_auth = "3ab139e9e6186ed0ed48905e52d2be0cbfaf9abc8ddacc64f691a387d7787cc6";
-export const api_event = "2";
+export const api_event = "3";
 
 function getHeaderData(attribute = null){
   var contentType = (attribute && attribute.urlencoded) ? 'application/x-www-form-urlencoded' : '';
