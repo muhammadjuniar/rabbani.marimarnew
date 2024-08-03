@@ -107,7 +107,7 @@
 																		<div class="row align-items-center p-1 pl-2 pr-2">
 																			<div class="col-4 text-center">
 																		<div class="profile-img">
-																			<img :default="(children.child_pic) ? children.child_pic : getAssetFile('images/marimar/member_area','ico_profile.png')" :src="(children.child_pic) ? children.child_pic : getAssetFile('images/marimar/member_area','ico_profile.png')"/>
+																			<img class="img" default="(children.child_pic) ? children.child_pic : getAssetFile('images/marimar/member_area','ico_profile.png')" :src="(children.child_pic) ? children.child_pic : getAssetFile('images/marimar/member_area','ico_profile.png')"/>
 																		</div>
 																	</div>
 																	<div class="col-8">
@@ -124,8 +124,8 @@
 																			<input type="text" readonly class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="Member Group Qasidah" :value="children.child_name" >
 																		</div>
 																		<div class="form-group mb-3">
-																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary">Tanggal Lahir <span class="main-color-secondary fs-9px lh-normal fw-normal">wajib diisi</span></label>
-																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar">{{ children.child_dob }}</label>
+																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar mb-2">Tanggal Lahir <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
+																			<label class="form-label-profile form-label mb-1 fs-14px main-color-secondary-marimar"><b>{{ children.child_dob }}</b></label>
 
 																		</div>
 																		<div class="form-group mb-3">
@@ -145,7 +145,7 @@
 																		<div class="row align-items-center p-1 pl-2 pr-2">
 																			<div class="col-4 text-center">
 																		<div class="profile-img">
-																			<img :default="(profilePic) ? profilePic : getAssetFile('images/marimar/member_area','ico_profile.png')" id="preview-select-image-foto-profile" :src="(profilePic) ? profilePic : getAssetFile('images/marimar/member_area','ico_profile.png')"/>
+																			<img class="img" :default="(profilePic) ? profilePic : getAssetFile('images/marimar/member_area','ico_profile.png')" id="preview-select-image-foto-profile" :src="(profilePic) ? profilePic : getAssetFile('images/marimar/member_area','ico_profile.png')"/>
 																			<input id="file-select-image-foto-profile" :disabled="(new_member.status_member == 'confirm') ? true : false" v-bind:class="{ disabled: new_member.status_member == 'confirm' }" type="file" @change.prevent="onChangeSelectImage($event, 'foto-profile')" class="custom-file-input file-select-image is-absolute w-100 h-100 br-80" name="foto">
 																		</div>
 																	</div>
@@ -163,7 +163,7 @@
 																			<input type="text" v-model="new_member.name_member" :disabled="(new_member.status_member == 'confirm') ? true : false" v-bind:class="{ disabled: new_member.status_member == 'confirm' }" class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="Member Group Qasidah">
 																		</div>
 																		<div class="form-group mb-3">
-																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary">Tanggal Lahir <span class="main-color-secondary fs-9px lh-normal fw-normal">wajib diisi</span></label>
+																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar">Tanggal Lahir <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
 																			<div class="row m-0 gap-10">
 																				<input type="text" v-on:keypress="numbersOnly" v-model="birthdate.day" minlength="1" maxlength="2" :disabled="(new_member.status_member == 'confirm') ? true : false" v-bind:class="{ disabled: new_member.status_member == 'confirm' }" class="text-center w-15 form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary" placeholder="00">
 																				<input type="text" v-on:keypress="numbersOnly" v-model="birthdate.month" minlength="1" maxlength="2" :disabled="(new_member.status_member == 'confirm') ? true : false" v-bind:class="{ disabled: new_member.status_member == 'confirm' }" class="text-center w-15 form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary" placeholder="00">
@@ -176,7 +176,7 @@
 																		</div>
 																		<div v-if="new_member.status_member == 'confirm'" class="form-group mb-3">
 																			<label class="form-label-profile form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar w-100">Kode verifikasi <code>*(OTP)</code> <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
-																			<input type="text" v-model="new_member.otp"  class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="08XXXXXXXXXX">
+																			<input type="text" v-model="new_member.otp"  class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="kode OTP">
 																		</div>
 																		</div>
 																	</div>
@@ -579,6 +579,10 @@
 			}
 
 			const processRegisterMember = async () => {
+
+				if(!new_member.name_member || new_member.name_member == '') {
+					alertNotComplete('Lengkapi nama member terlebih dulu.'); return false;
+				} 
 
 				var existPic = await getFileUpload('file-select-image-foto-profile');
 				if(!existPic && (!profilePic.value || profilePic.value == '')){

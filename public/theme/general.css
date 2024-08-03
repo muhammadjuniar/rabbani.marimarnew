@@ -1027,8 +1027,8 @@ select.form-control{height: calc(2.75rem + 2px) !important;}
   }
   
   .profile-img .img {
-    width: 57px !important;
-    height: 57px !important;
+    width: 75px !important;
+    height: 75px !important;
     object-fit: contain !important;
   }
   
