@@ -89,11 +89,15 @@
 														<div class="body-content-profile mb-5">
 															<div class="form-group mb-3">
 																<label class="form-label-profile form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar w-100">Nama Group <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
-																<input type="text" v-model="profile.name" required class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="Group Qasidah Anda">
+																<input type="text" v-model="profile.name" class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="Group Qasidah Anda">
+															</div>
+															<div class="form-group mb-3">
+																<label class="form-label-profile form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar w-100">Nama Penanggungjawab <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
+																<input type="text" v-model="profile.member_responsible_name" class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="Penanggungjawab">
 															</div>
 															<div class="form-group mb-3">
 																<label class="form-label-profile form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar w-100">Kontak Penanggungjawab <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
-																<input type="text" disabled minlength="8" maxlength="15" v-on:keypress="numbersOnly" required class="disabled form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary" :value="user.member_phone" placeholder="08xxxxxx" readonly>
+																<input type="text" disabled minlength="8" maxlength="15" v-on:keypress="numbersOnly" class="disabled form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary" :value="user.member_phone" placeholder="08xxxxxx" readonly>
 															</div>
 														</div>
 														<div class="head-content-profile mb-2">
@@ -126,7 +130,10 @@
 																		<div class="form-group mb-3">
 																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar mb-2">Tanggal Lahir <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
 																			<label class="form-label-profile form-label mb-1 fs-14px main-color-secondary-marimar"><b>{{ children.child_dob }}</b></label>
-
+																		</div>
+																		<div class="form-group mb-3">
+																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar mb-2">Jenis Kelamin <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
+																			<label class="form-label-profile form-label mb-1 fs-14px main-color-secondary-marimar"><b>{{ children.child_gender == 1? 'Laki-laki' : 'Perempuan' }}</b></label>
 																		</div>
 																		<div class="form-group mb-3">
 																			<label class="form-label-profile form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar w-100">Nomor Whatsapp <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
@@ -163,12 +170,24 @@
 																			<input type="text" v-model="new_member.name_member" :disabled="(new_member.status_member == 'confirm') ? true : false" v-bind:class="{ disabled: new_member.status_member == 'confirm' }" class="form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary-marimar text-capitalize" placeholder="Member Group Qasidah">
 																		</div>
 																		<div class="form-group mb-3">
-																			<label class="form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar">Tanggal Lahir <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
+																			<label class="form-label-profile form-label mb-2 fs-12px main-color-secondary-marimar">Tanggal Lahir <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
+																			<div class="row m-0 gap-10">
+																				<label class="form-label-profile form-label mb-1 fs-11px main-color-secondary-marimar w-15"><span class="main-color-secondary-marimar fs-11px lh-normal fw-normal">Tanggal</span></label>
+																				<label class="form-label-profile form-label mb-1 fs-11px main-color-secondary-marimar w-15"><span class="main-color-secondary-marimar fs-11px lh-normal fw-normal">Bulan</span></label>
+																				<label class="form-label-profile form-label mb-1 fs-11px main-color-secondary-marimar w-15"><span class="main-color-secondary-marimar fs-11px lh-normal fw-normal">Tahun</span></label>
+																			</div>
 																			<div class="row m-0 gap-10">
 																				<input type="text" v-on:keypress="numbersOnly" v-model="birthdate.day" minlength="1" maxlength="2" :disabled="(new_member.status_member == 'confirm') ? true : false" v-bind:class="{ disabled: new_member.status_member == 'confirm' }" class="text-center w-15 form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary" placeholder="00">
 																				<input type="text" v-on:keypress="numbersOnly" v-model="birthdate.month" minlength="1" maxlength="2" :disabled="(new_member.status_member == 'confirm') ? true : false" v-bind:class="{ disabled: new_member.status_member == 'confirm' }" class="text-center w-15 form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary" placeholder="00">
 																				<input type="text" v-on:keypress="numbersOnly" v-model="birthdate.year" minlength="4" maxlength="4" :disabled="(new_member.status_member == 'confirm') ? true : false" v-bind:class="{ disabled: new_member.status_member == 'confirm' }" class="text-center w-20 form-control form-control-lg br-8 pl-3 pr-3 pt-4 pb-4 border-0 main-bg-cream-light main-text-secondary" placeholder="0000">
 																			</div>
+																		</div>
+																		<div class="form-group mb-3">
+																			<label class="form-label-profile form-label mb-2 fs-12px main-color-secondary-marimar">Jenis Kelamin <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
+																			<select required class="form-control form-control-lg br-8 main-color-secondary-dark disabled main-bg-cream-light" v-model="new_member.gender">
+																				<option value="male">Laki-Laki</option>
+																				<option value="female">Perempuan</option>
+																			</select>
 																		</div>
 																		<div class="form-group mb-3">
 																			<label class="form-label-profile form-label-profile form-label mb-1 fs-12px main-color-secondary-marimar w-100">Nomor Whatsapp <span class="main-color-secondary-marimar fs-9px lh-normal fw-normal">wajib diisi</span></label>
@@ -280,6 +299,7 @@
 				parent_name:'',
 				parent_phone:'',
 				gender: 'male',
+				member_responsible_name: '',
 			});
 			let registrationNumber = ref(null);
 
@@ -411,7 +431,10 @@
 						}
 					});
 
+					profile.member_responsible_name = user.value.member_responsible_name ? user.value.member_responsible_name : '';
+
 					profile.gender = (profile.gender == 1) ? 'male' : 'female';
+					new_member.gender = (new_member.gender == 1) ? 'male' : 'female';
 
 					if(user.value.member_code) registrationNumber.value = user.value.member_code;
 					if(user.value.member_province) location.province = user.value.member_province;
@@ -501,9 +524,14 @@
 				// forUpdateData.append(`pic`, existPic);
 
 				if(!profile.name){
-					alertNotComplete('Lengkapi nama lengkap kamu'); return false;
+					alertNotComplete('Lengkapi nama group kamu'); return false;
 				}
 				forUpdateData.append('name', profile.name);
+
+				if(!profile.member_responsible_name){
+					alertNotComplete('Lengkapi nama penanggungjawab'); return false;
+				}
+				forUpdateData.append('responsible_name', profile.member_responsible_name);
 
 				// var setDob = `${birthdate.year}-${birthdate.month}-${birthdate.day}`;
 				// var checkDob = isValidDate(setDob);
@@ -580,6 +608,14 @@
 
 			const processRegisterMember = async () => {
 
+				if(!profile.name){
+					alertNotComplete('Lengkapi nama group kamu'); return false;
+				}
+
+				if(!profile.member_responsible_name){
+					alertNotComplete('Lengkapi nama penanggungjawab'); return false;
+				}
+
 				if(!new_member.name_member || new_member.name_member == '') {
 					alertNotComplete('Lengkapi nama member terlebih dulu.'); return false;
 				} 
@@ -595,6 +631,10 @@
 					alertNotComplete('Tanggal lahir tidak sesuai'); return false;
 				}
 				var is_dob = dateFormat(setDob, 'YYYY-MM-DD');
+			
+				if(!new_member.phone_number || new_member.phone_number == '') {
+					alertNotComplete('Lengkapi nomor whatsapp member terlebih dulu.'); return false;
+				} 
 
 				if(new_member.status_member == 'confirm'){
 					return processConfirmMember();
@@ -612,7 +652,7 @@
 				var is_dob = dateFormat(setDob, 'YYYY-MM-DD');
 
 				const result = await confirmationMemberRegister({
-					member_id:member_id, member_group:profile.name, name_member:new_member.name_member, phone_number:new_member.phone_number, birthdate:is_dob, img_member: existPic, code:member_code.slice(8), otp:new_member.otp
+					member_id:member_id, member_group:profile.name, name_member:new_member.name_member, phone_number:new_member.phone_number, birthdate:is_dob, gender:new_member.gender, img_member: existPic, code:member_code.slice(8), otp:new_member.otp
 				});
 				if(result){
 					sleep(1000); window.location.reload();

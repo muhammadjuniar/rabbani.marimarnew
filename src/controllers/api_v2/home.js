@@ -136,7 +136,7 @@ const confirmationMemberRegister = async (data = null) => {
     sendData.append('name', data.name_member);
     sendData.append('phone', data.phone_number);
     sendData.append('dob', data.birthdate);
-    sendData.append('gender', 1);
+    sendData.append('gender', data.gender);
     sendData.append('address', 'indonesia');
     sendData.append('pic', data.img_member);
     sendData.append('code', '');
